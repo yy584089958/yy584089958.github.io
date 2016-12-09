@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>我的第一篇测试 | Yang Yang</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/app.css">
+  <!-- <link rel='stylesheet' href='http://fonts.useso.com/css?family=Source+Code+Pro'> -->
+  
+</head>
+
+<body>
+  <nav class="app-nav">
+  
+    
+      <a href="/.">home</a>
+    
+  
+    
+      <a href="/archives">archive</a>
+    
+  
+    
+      <a href="/about">about</a>
+    
+  
+    
+      <a href="/atom.xml">rss</a>
+    
+  
+</nav>
+
+  <main class="post">
+  <article>
+  <h1 class="article-title">
+    <a href="/2016/12/09/我的第一篇测试/">我的第一篇测试</a>
+  </h1>
+
+  <section class="article-meta">
+    <p class="article-date">December 09 2016</p>
+  </section>
+
+  <section class="article-entry">
+    <p><img src="http://a.hiphotos.baidu.com/zhidao/pic/item/f9dcd100baa1cd11aa2ca018bf12c8fcc3ce2d74.jpg" alt=""></p>
+<table>
+<thead>
+<tr>
+<th>Tables</th>
+<th style="text-align:center">Are</th>
+<th style="text-align:right">Cool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>col 3 is</td>
+<td style="text-align:center">right-aligned</td>
+<td style="text-align:right">$1600</td>
+</tr>
+<tr>
+<td>col 2 is</td>
+<td style="text-align:center">centered</td>
+<td style="text-align:right">$12</td>
+</tr>
+<tr>
+<td>zebra stripes</td>
+<td style="text-align:center">are neat</td>
+<td style="text-align:right">$1</td>
+</tr>
+</tbody>
+</table>
+<h2>bash颜色测试</h2>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"><span class="comment">#===============================================================</span></div><div class="line"><span class="comment">#		AUTHOR: YangYang yangyang@suishouji.com</span></div><div class="line"><span class="comment">#		CREATER: 2016-12-08 18:01:13</span></div><div class="line"><span class="comment">#		FILENAME: bbs.sh</span></div><div class="line"><span class="comment">#		DESCRIPTION: </span></div><div class="line"><span class="comment">#===============================================================</span></div><div class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/src</div><div class="line">wget http://192.168.241.231/releases/php/SeasLog-1.6.8.tgz</div><div class="line">tar xf SeasLog-1.6.8.tgz</div><div class="line"><span class="built_in">cd</span> SeasLog-1.6.8</div><div class="line">/usr/<span class="built_in">local</span>/php/bin/phpize </div><div class="line">./configure --with-php-config=/usr/<span class="built_in">local</span>/php/bin/php-config  &gt; /dev/null</div><div class="line">make &amp;&amp; make install</div><div class="line"><span class="built_in">test</span> <span class="_">-d</span> /var/www/html/bbsapi &amp;&amp; path=<span class="string">"/var/www/html/bbsapi/storage/logs"</span></div><div class="line"><span class="built_in">test</span> <span class="_">-d</span> /var/www/html/bbs &amp;&amp;  path=<span class="string">"/var/www/html/bbs/storage/logs"</span></div><div class="line">cat &gt;&gt; /usr/<span class="built_in">local</span>/php/lib/php.ini &lt;&lt; EOF</div><div class="line">[seaslog]</div><div class="line">extension=seaslog.so</div><div class="line">seaslog.default_basepath = <span class="variable">$path</span></div><div class="line">;默认<span class="built_in">log</span>根目录</div><div class="line">seaslog.default_logger = default</div><div class="line">;默认logger目录</div><div class="line">seaslog.disting_type = 1</div><div class="line">;是否以<span class="built_in">type</span>分文件 1是 0否(默认)</div><div class="line">seaslog.disting_by_hour = 0</div><div class="line">;是否每小时划分一个文件 1是 0否(默认)</div><div class="line">seaslog.use_buffer = 1</div><div class="line">;是否启用buffer 1是 0否(默认)</div><div class="line">seaslog.buffer_size = 100</div><div class="line">;buffer中缓冲数量 默认0(不使用buffer_size)</div><div class="line">seaslog.level = 0</div><div class="line">EOF</div><div class="line">/usr/<span class="built_in">local</span>/php/bin/php -m |grep --color -i seas </div><div class="line"><span class="keyword">if</span> [ $? <span class="_">-eq</span> 0 ];<span class="keyword">then</span></div><div class="line"><span class="built_in">echo</span> <span class="string">'安装seaslog成功'</span></div><div class="line"><span class="keyword">fi</span></div><div class="line">rm -rf /usr/<span class="built_in">local</span>/src/SeasLog*</div><div class="line"></div><div class="line"><span class="keyword">done</span></div></pre></td></tr></table></figure></p>
+<h2>python颜色测试</h2>
+<p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/python</span></div><div class="line"><span class="keyword">import</span> sys</div><div class="line"><span class="keyword">try</span>:</div><div class="line">    <span class="keyword">import</span> yum</div><div class="line"><span class="keyword">except</span> ImportError:</div><div class="line">    <span class="keyword">print</span> &gt;&gt; sys.stderr, <span class="string">"""\</span></div><div class="line">There was a problem importing one of the Python modules</div><div class="line">required to run yum. The error leading to this problem was:</div><div class="line"></div><div class="line">   %s</div><div class="line"></div><div class="line">Please install a package which provides this module, or</div><div class="line">verify that the module is installed correctly.</div><div class="line"></div><div class="line">It's possible that the above module doesn't match the</div><div class="line">current version of Python, which is:</div><div class="line">%s</div><div class="line"></div><div class="line">If you cannot solve this problem yourself, please go to </div><div class="line">the yum faq at:</div><div class="line">  http://yum.baseurl.org/wiki/Faq</div><div class="line">  </div><div class="line">""" % (sys.exc_value, sys.version)</div><div class="line">    sys.exit(<span class="number">1</span>)</div><div class="line"></div><div class="line">sys.path.insert(<span class="number">0</span>, <span class="string">'/usr/share/yum-cli'</span>)</div><div class="line"><span class="keyword">try</span>:</div><div class="line">    <span class="keyword">import</span> yummain</div><div class="line">    yummain.user_main(sys.argv[<span class="number">1</span>:], exit_code=<span class="keyword">True</span>)</div><div class="line"><span class="keyword">except</span> KeyboardInterrupt, e:</div><div class="line">    <span class="keyword">print</span> &gt;&gt; sys.stderr, <span class="string">"\n\nExiting on user cancel."</span></div><div class="line">    sys.exit(<span class="number">1</span>)</div></pre></td></tr></table></figure></p>
+<h2>html测试</h2>
+<p><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">role</span>=<span class="string">"form"</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"name"</span>&gt;</span>名称<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"name"</span> </span></div><div class="line">         <span class="attr">placeholder</span>=<span class="string">"请输入名称"</span>&gt;</div><div class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"inputfile"</span>&gt;</span>文件输入<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h2>java 测试</h2>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">    * 输出一行字符串“Hello World!”</div><div class="line">    * <span class="doctag">@param</span> args</div><div class="line">    */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    System.out.println(<span class="string">"Hello World!"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2>标记测试</h2>
+<blockquote>
+<p><a href="https://www.google.com" target="_blank" rel="external">点我上谷歌</a>
+Hello ,
+	my name is yang yang,this is my first test.
+	my name is yang yang,this is my first test.
+	* my name is yang yang,this is my first test.
+	* my name is yang yang,this is my first test.
+	* my name is yang yang,this is my first test.</p>
+</blockquote>
+<ul>
+<li>my name is yang yang,this is my first test.</li>
+<li>my name is yang yang,this is my first test.</li>
+<li>my name is yang yang,this is my first test.</li>
+<li>my name is yang yang,this is my first test.</li>
+</ul>
+<h3>vim配置粘上来 段落测试</h3>
+<pre><code>&quot;inoremap  &lt;esc&gt;
+set t_Co=16
+map &lt;space&gt;w :wq&lt;cr&gt;
+map &lt;space&gt;q :q!&lt;cr&gt;
+set pastetoggle=&lt;F10&gt;
+set tabstop=4
+set nu rnu
+inoremap &lt;C-d&gt; &lt;DELETE&gt;
+let g:solarized_termcolors=256
+colorscheme solarized
+syntax enable
+set background=dark
+map &lt;silent&gt; ff :NERDTreeToggle&lt;cr&gt;
+autocmd bufenter * if (winnr(&quot;$&quot;) == 1 &amp;&amp; exists(&quot;b:NERDTreeType&quot;) &amp;&amp;b:NERDTreeType == &quot;primary&quot;) | q | endif
+au BufRead *.py map &lt;buffer&gt; &lt;F5&gt; :w&lt;CR&gt;:!/usr/bin/env python % &lt;CR&gt;
+</code></pre>
+
+  </section>
+</article>
+
+  <div class="sharing grid">
+  <section class="profile grid-item grid">
+    <img class="avatar" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS_6oftMHND0w7ibkChOwL7GMe1y2VbrdQL53p_CjfPirX4zesJ" alt="avatar" />
+    <div class="grid-item">
+      <p class="title"> Yang Yang </p>
+      <p class="subtitle"> Hello everyone </p>
+    <div>
+  </section>
+
+  <section class="share-btns">
+    <!-- <p> share it if you like it~ </p> -->
+    <a
+  class="twitter-share-button"
+  data-size="large"
+  data-via="DrakeLeung"
+  href="https://twitter.com/intent/tweet?text=<img src="http://a.h"
+>
+  Tweet
+</a>
+
+<script>
+  window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  js.async = true;
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));
+</script>
+
+  </section>
+</div>
+
+
+  
+    
+<section class="article-comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+<script>
+  var disqus_shortname = 'drakeleung';
+  
+  var disqus_url = 'http://www.opdays.com/2016/12/09/我的第一篇测试/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+  
+</main>
+
+</body>
+</html>
