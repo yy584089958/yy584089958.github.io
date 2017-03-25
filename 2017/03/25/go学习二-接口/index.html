@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>go学习二-接口 | Yang Yang</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="shortcut icon" href="/apple.ico">
+  <link rel="stylesheet" href="/css/app.css">
+  <!-- <link rel='stylesheet' href='http://fonts.useso.com/css?family=Source+Code+Pro'> -->
+  
+</head>
+
+<body>
+  <nav class="app-nav">
+  
+    
+      <a href="/.">home</a>
+    
+  
+    
+      <a href="/archives">archive</a>
+    
+  
+    
+      <a href="/about">about</a>
+    
+  
+    
+      <a href="/atom.xml">rss</a>
+    
+  
+</nav>
+
+  <main class="post">
+  <article>
+  <h1 class="article-title">
+    <a href="/2017/03/25/go学习二-接口/">go学习二-接口</a>
+  </h1>
+
+  <section class="article-meta">
+    <p class="article-date">March 25 2017</p>
+  </section>
+
+  <section class="article-entry">
+    <h1>2 go 学习第二篇 接口</h1>
+<p><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></div><div class="line"></div><div class="line"><span class="comment">//接口  定义方  和 实现方</span></div><div class="line"><span class="comment">//接口  是对一组类型的公共特性的抽象</span></div><div class="line"><span class="comment">//一个类只需要实现了接口要求的所有函数，我们就说这个类实现了该接口</span></div><div class="line"></div><div class="line"><span class="keyword">type</span> Dog <span class="keyword">struct</span> &#123;</div><div class="line">	name <span class="keyword">string</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">type</span> Cat <span class="keyword">struct</span> &#123;</div><div class="line">	name <span class="keyword">string</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">type</span> EaterandRunner <span class="keyword">interface</span> &#123;</div><div class="line">	eat()</div><div class="line">	run()</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">type</span> Runner <span class="keyword">interface</span> &#123;</div><div class="line">	run()</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(self *Dog)</span> <span class="title">eat</span><span class="params">()</span></span> &#123;</div><div class="line">	fmt.Printf(<span class="string">"我叫%s\n"</span>, self.name)</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(self *Dog)</span> <span class="title">run</span><span class="params">()</span></span> &#123;</div><div class="line">	fmt.Printf(<span class="string">"我叫%s\n"</span>, self.name)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	<span class="keyword">var</span> dog Dog = Dog&#123;<span class="string">"xiaogou"</span>&#125;     </div><div class="line">	<span class="comment">//初始化xiaogou类</span></div><div class="line">	<span class="keyword">var</span> eatrun EaterandRunner = &amp;dog </div><div class="line">	<span class="comment">//Dog类实现了 EaterandRunner 接口的所有方法 所以可以赋值给 EaterandRunner 接口</span></div><div class="line">	<span class="comment">//静态检查 dog实例 你会eat吗 你会run 吗 是 就可以赋值</span></div><div class="line">	<span class="comment">//var eat1 EaterandRunner = new(Cat)    </span></div><div class="line">	<span class="comment">//编译错误 *Cat does not implement Eater (missing eat method)</span></div><div class="line">	<span class="comment">//cat 对象 你什么都不会你没有实现我的接口</span></div><div class="line">	<span class="keyword">var</span> run Runner = eatrun <span class="comment">//run接口的方法列表是 EaterandRunner 接口方法列表的子集 就可以赋值</span></div><div class="line">	<span class="comment">//会跑和会吃的对象  一定会跑</span></div><div class="line">	fmt.Println(eatrun)</div><div class="line">	fmt.Println(run)</div><div class="line">	run.run() <span class="comment">//接口调用方法</span></div><div class="line">	<span class="comment">//var er EaterandRunner = run </span></div><div class="line">	<span class="comment">//编译错误 Runner does not implement EaterandRunner (missing eat method)</span></div><div class="line">	<span class="comment">// 会跑的对象   不一会   会吃</span></div><div class="line">	<span class="keyword">if</span> er, ok := run.(EaterandRunner); ok &#123;</div><div class="line">		<span class="comment">// 查询会跑接口指向的对象  是否会吃  ，肯定会吃的 因为run 接口 是eatrun接口 赋值过来的</span></div><div class="line">		<span class="comment">//检查run接口指向的对象 是否实现了EaterandRunner 接口的函数</span></div><div class="line">		<span class="comment">//向上转型需要判断</span></div><div class="line">		fmt.Println(er, ok, <span class="string">"run 接口 转成 EaterandRunner 接口成功"</span>)</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">//还可以问接口指向的对象 是哪个类型</span></div><div class="line">	<span class="keyword">if</span> d, ok := run.(*Dog); ok &#123;</div><div class="line">		fmt.Println(d, <span class="string">"run 接口指向的对象是 Dog"</span>)</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>输出</p>
+<p><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&amp;&#123;xiaogou&#125;</div><div class="line">&amp;&#123;xiaogou&#125;</div><div class="line">我叫xiaogou</div><div class="line">&amp;&#123;xiaogou&#125; <span class="literal">true</span> run 接口 转成 EaterandRunner 接口成功</div><div class="line">&amp;&#123;xiaogou&#125; run 接口指向的对象是 Dog</div></pre></td></tr></table></figure></p>
+
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="post-go学习二-接口" data-title="go学习二-接口" data-url="http://www.opdays.com/2017/03/25/go学习二-接口/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'opdays'};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.unstable.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+      </script>
+  </section>
+</article>
+
+  <div class="sharing grid">
+  <section class="profile grid-item grid">
+    <img class="avatar" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS_6oftMHND0w7ibkChOwL7GMe1y2VbrdQL53p_CjfPirX4zesJ" alt="avatar" />
+    <div class="grid-item">
+      <p class="title"> Yang Yang </p>
+      <p class="subtitle"> Hello everyone </p>
+    <div>
+  </section>
+
+  <section class="share-btns">
+    <!-- <p> share it if you like it~ </p> -->
+    <a
+  class="twitter-share-button"
+  data-size="large"
+  data-via="DrakeLeung"
+  href="https://twitter.com/intent/tweet?text=>2 go 学习第二篇 接口</h1>
+"
+>
+  Tweet
+</a>
+
+<script>
+  window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  js.async = true;
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));
+</script>
+
+  </section>
+</div>
+
+
+  
+</main>
+
+</body>
+</html>

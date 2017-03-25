@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>go学习一-类继承 | Yang Yang</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="shortcut icon" href="/apple.ico">
+  <link rel="stylesheet" href="/css/app.css">
+  <!-- <link rel='stylesheet' href='http://fonts.useso.com/css?family=Source+Code+Pro'> -->
+  
+</head>
+
+<body>
+  <nav class="app-nav">
+  
+    
+      <a href="/.">home</a>
+    
+  
+    
+      <a href="/archives">archive</a>
+    
+  
+    
+      <a href="/about">about</a>
+    
+  
+    
+      <a href="/atom.xml">rss</a>
+    
+  
+</nav>
+
+  <main class="post">
+  <article>
+  <h1 class="article-title">
+    <a href="/2017/03/25/go学习一-类继承/">go学习一-类继承</a>
+  </h1>
+
+  <section class="article-meta">
+    <p class="article-date">March 25 2017</p>
+  </section>
+
+  <section class="article-entry">
+    <h1>1 go 学习第一篇 继承</h1>
+<h5>创建类 初始化类</h5>
+<p><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></div><div class="line"></div><div class="line"><span class="keyword">type</span> Animal <span class="keyword">struct</span> &#123;</div><div class="line">	class <span class="keyword">string</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">type</span> Cat <span class="keyword">struct</span> &#123;</div><div class="line">	Animal <span class="comment">//嵌入字段</span></div><div class="line">	name   <span class="keyword">string</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(self *Cat)</span> <span class="title">eat</span><span class="params">()</span></span> &#123;</div><div class="line">	fmt.Printf(<span class="string">"我是%s 我是 %s在吃\n"</span>, self.name, self.Animal.class)</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// func (self Cat) eat() &#123;</span></div><div class="line"><span class="comment">// 	fmt.Printf("我是%s 我是 %s在吃\n", self.name, self.Animal.class)</span></div><div class="line"></div><div class="line"><span class="comment">// &#125;</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	<span class="keyword">var</span> cat1 Cat = Cat&#123;Animal: Animal&#123;<span class="string">"猫"</span>&#125;, name: <span class="string">"咪咪"</span>&#125; <span class="comment">//key value 形式初始化</span></div><div class="line">	<span class="keyword">var</span> cat2 Cat = Cat&#123;Animal&#123;<span class="string">"猫"</span>&#125;, <span class="string">"咪咪"</span>&#125;               <span class="comment">// 顺序初始化</span></div><div class="line">	<span class="keyword">var</span> cat3 *Cat = <span class="built_in">new</span>(Cat)                            <span class="comment">//new 出来的是一个指向类的指针，</span></div><div class="line">	<span class="keyword">var</span> cat4 *Cat = &amp;Cat&#123;Animal: Animal&#123;<span class="string">"猫"</span>&#125;, name: <span class="string">"咪咪"</span>&#125;</div><div class="line">	cat3.eat()       <span class="comment">//未进行显式初始化的变量都会被初始化为该类型的零值</span></div><div class="line">	cat3.class = <span class="string">"猫"</span> <span class="comment">//嵌入字段 子类默认拥有父类全部字段</span></div><div class="line">	cat3.name = <span class="string">"咪咪"</span></div><div class="line">	cat1.eat()</div><div class="line">	cat2.eat()</div><div class="line">	cat3.eat()</div><div class="line">	cat4.eat()</div><div class="line">	<span class="comment">// 1  2 是对象实例  3 4 是对象实例的指针  他们都可以调用 self *Cat  和 self Cat 方法 只是不能共存</span></div><div class="line">	fmt.Println(cat1, cat2, cat3, &amp;cat4)</div><div class="line">	<span class="comment">//</span></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">我是 我是 在吃</div><div class="line">我是咪咪 我是 猫在吃</div><div class="line">我是咪咪 我是 猫在吃</div><div class="line">我是咪咪 我是 猫在吃</div><div class="line">我是咪咪 我是 猫在吃</div><div class="line">&#123;&#123;猫&#125; 咪咪&#125; &#123;&#123;猫&#125; 咪咪&#125; &amp;&#123;&#123;猫&#125; 咪咪&#125; <span class="number">0xc042052018</span></div></pre></td></tr></table></figure></p>
+<h5>组合指针</h5>
+<p><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></div><div class="line"></div><div class="line"><span class="keyword">type</span> Father <span class="keyword">struct</span> &#123;</div><div class="line">	name <span class="keyword">string</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">type</span> Son <span class="keyword">struct</span> &#123;</div><div class="line">	age   <span class="keyword">int</span></div><div class="line">	super *Father</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(self *Father)</span> <span class="title">Run</span><span class="params">()</span></span> &#123;</div><div class="line">	fmt.Printf(<span class="string">"%s在跑"</span>, self.name)</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(self *Son)</span> <span class="title">Run</span><span class="params">()</span></span> &#123;</div><div class="line">	fmt.Printf(<span class="string">"%s再跑 我的年龄是%d"</span>, self.super.name, self.age)</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	yang := <span class="built_in">new</span>(Father)</div><div class="line">	son := <span class="built_in">new</span>(Son)</div><div class="line">	yang.name = <span class="string">"yang"</span></div><div class="line">	yang.Run()</div><div class="line">	son.age = <span class="number">22</span></div><div class="line">	son.super = yang</div><div class="line">	son.Run()</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>输出
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yang在跑son再跑 我的年龄是22</div></pre></td></tr></table></figure></p>
+<h5>组合父类</h5>
+<p><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></div><div class="line"></div><div class="line"><span class="keyword">type</span> Father <span class="keyword">struct</span> &#123;</div><div class="line">	name <span class="keyword">string</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">type</span> Son <span class="keyword">struct</span> &#123;</div><div class="line">	age   <span class="keyword">int</span></div><div class="line">	super Father</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(self *Father)</span> <span class="title">Run</span><span class="params">()</span></span> &#123;</div><div class="line">	fmt.Printf(<span class="string">"%s在跑"</span>, self.name)</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(self *Son)</span> <span class="title">Run</span><span class="params">()</span></span> &#123;</div><div class="line">	fmt.Printf(<span class="string">"%s再跑 我的年龄是%d"</span>, self.super.name, self.age)</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	yang := <span class="built_in">new</span>(Father)</div><div class="line">	son := <span class="built_in">new</span>(Son)</div><div class="line">	yang.name = <span class="string">"yang"</span></div><div class="line">	yang.Run()</div><div class="line">	son.super.name = <span class="string">"son"</span></div><div class="line">	son.age = <span class="number">22</span></div><div class="line">	son.Run()</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>输出
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yang在跑yang再跑 我的年龄是22</div></pre></td></tr></table></figure></p>
+<p>总结<br>
+从指针中组合，需要一个父类指针，也就是父类实例化的对象 ，子类有一个具体的父类对象特征</p>
+<p>从父类中组合，不需要父类指针，子类有父类模板的特征</p>
+
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="post-go学习一-类继承" data-title="go学习一-类继承" data-url="http://www.opdays.com/2017/03/25/go学习一-类继承/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'opdays'};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.unstable.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+      </script>
+  </section>
+</article>
+
+  <div class="sharing grid">
+  <section class="profile grid-item grid">
+    <img class="avatar" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS_6oftMHND0w7ibkChOwL7GMe1y2VbrdQL53p_CjfPirX4zesJ" alt="avatar" />
+    <div class="grid-item">
+      <p class="title"> Yang Yang </p>
+      <p class="subtitle"> Hello everyone </p>
+    <div>
+  </section>
+
+  <section class="share-btns">
+    <!-- <p> share it if you like it~ </p> -->
+    <a
+  class="twitter-share-button"
+  data-size="large"
+  data-via="DrakeLeung"
+  href="https://twitter.com/intent/tweet?text=>1 go 学习第一篇 继承</h1>
+"
+>
+  Tweet
+</a>
+
+<script>
+  window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  js.async = true;
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));
+</script>
+
+  </section>
+</div>
+
+
+  
+</main>
+
+</body>
+</html>
